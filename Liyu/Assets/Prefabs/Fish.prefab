@@ -85,11 +85,10 @@ MonoBehaviour:
   fishHead: {fileID: 6036843984250432360}
   TurtleShell: {fileID: 8520912223877023632, guid: eecca030a8454bb429cf293bc817fc13, type: 3}
   BananaPeel: {fileID: 1978901637744508622, guid: 53894119ecc7343418584a0af01510e1, type: 3}
-  InverseBlock: {fileID: 5558557804428782642, guid: a56253b9bcf94e245b30dd566bd75247, type: 3}
-  Ink: {fileID: 6722314462296581563, guid: f6dc9177f8d15eb4591f1426157fcf0b, type: 3}
+  Ink: {fileID: 0}
   FishFire: {fileID: 179937348874764296}
   FishThrow: {fileID: 7803876493949851608}
-  Enemy: {fileID: 6036843983048436267, guid: d6c4ba5f3e4f70b41aefc9c5849faab2, type: 3}
+  Enemy: {fileID: 0}
   InverseNum: 1
   isInverse: 0
   Turtle: 0

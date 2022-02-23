@@ -12,7 +12,6 @@ public class FishControl : MonoBehaviour
     [SerializeField] Transform fishHead;
     [SerializeField] GameObject TurtleShell;
     [SerializeField] GameObject BananaPeel;
-    [SerializeField] GameObject InverseBlock;
     public Image Ink;
     [SerializeField] Transform FishFire;
     [SerializeField] Transform FishThrow;
@@ -42,6 +41,13 @@ public class FishControl : MonoBehaviour
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), -steerAmount);
             // transform.Translate(0, moveAmount, 0);
         }
+        if (canMove && isInverse)
+        {
+            myFish.AddRelativeForce(new Vector2(0, moveAmount));
+            transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), steerAmount);
+            Invoke("NormalOp",5f);
+            // transform.Translate(0, moveAmount, 0);
+        }
         if (GetInked)
         {
             Invoke("Clean", 5f);
@@ -66,6 +72,14 @@ public class FishControl : MonoBehaviour
         {
             UseSquild();
         }
+    }
+    public void InverseOp()
+    {
+        isInverse = true;
+    }
+    public void NormalOp()
+    {
+        isInverse = false;
     }
 
     public void DisableControl()
@@ -115,14 +129,16 @@ public class FishControl : MonoBehaviour
     {
         if (Inverse == true)
         {
-          
+            Enemy.GetComponent<FishControl2>().InverseOp();
+            //Diff
+            Inverse = false;
         }
     }
     public void UseSquild()
     {
         if (Squild == true)
         {
-           Ink.color = new Color(255, 255, 255, 1f);
+           Ink.color = new Color(255f, 255f, 255f, 1f);
             GetInked = true;
             Squild = false;
         }

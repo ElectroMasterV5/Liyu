@@ -183,13 +183,17 @@ MonoBehaviour:
   fishHead: {fileID: 6036843984250432360}
   TurtleShell: {fileID: 8520912223877023632, guid: eecca030a8454bb429cf293bc817fc13, type: 3}
   BananaPeel: {fileID: 1978901637744508622, guid: 53894119ecc7343418584a0af01510e1, type: 3}
+  Ink: {fileID: 0}
   FishFire: {fileID: 8285297340419932643}
   FishThrow: {fileID: 6292305632499501057}
-  Enemy: {fileID: 6036843983048436267, guid: bc6aa0c2bb5799f499274125cb5659f3, type: 3}
+  Enemy: {fileID: 0}
+  InverseNum: 1
+  isInverse: 0
   Turtle: 0
   Banana: 0
   Inverse: 0
   Squild: 0
+  GetInked: 0
 --- !u!1 &6036843984250432363
 GameObject:
   m_ObjectHideFlags: 0
