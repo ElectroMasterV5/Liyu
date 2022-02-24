@@ -148,4 +148,24 @@ public class FishControl : MonoBehaviour
         Ink.color = new Color(255, 255, 255, 0f);
             GetInked = false;
     }
+    public void GetRandom()
+    {
+        float randomNum = Random.Range(0f, 4f);
+        if(randomNum < 1f)
+        {
+            Turtle = true;
+        }
+        if (randomNum < 2f&&randomNum >=1f)
+        {
+            Banana = true;
+        }
+        if (randomNum < 3f && randomNum >= 2f)
+        {
+            Squild = true;
+        }
+        if (randomNum <= 4f && randomNum >= 3f)
+        {
+            Inverse = true;
+        }
+    }
 }
