@@ -1,2 +1,8 @@
 
 *.log
+*.csproj
+*.csproj
+*.graph
+*.bin
+*.meta
+/Library
