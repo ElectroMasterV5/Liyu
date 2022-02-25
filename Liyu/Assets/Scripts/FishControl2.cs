@@ -25,7 +25,26 @@ public class FishControl2 : MonoBehaviour
     public bool Inverse = false;
     public bool Squild = false;
     public bool GetInked = false;
+    public bool Missile = false;
+    public Sprite[] TurtleIcon;
+    public Sprite[] BananaIcon;
+    public Sprite[] InverseIcon;
+    public Sprite[] SquildIcon;
+    public Sprite[] MissileIcon;
+    public Image IconJ;
+    public Image IconK;
+    public Image IconL;
+    public Image IconU;
+    public Image IconI;
     // Update is called once per frame
+    private void Start()
+    {
+        IconJ.sprite = TurtleIcon[0];
+        IconK.sprite = BananaIcon[0];
+        IconL.sprite = InverseIcon[0];
+        IconU.sprite = MissileIcon[0];
+        IconI.sprite = SquildIcon[0];
+    }
     void Update()
     {
         float steerAmount = Input.GetAxis("Horizontal2") * steerSpeed * Time.deltaTime;
@@ -72,6 +91,10 @@ public class FishControl2 : MonoBehaviour
         {
             UseSquild();
         }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            UseMissile();
+        }
     }
     public void InverseOp()
     {
@@ -95,25 +118,44 @@ public class FishControl2 : MonoBehaviour
 
     public void GetTurtle()
     {
+        IconJ.sprite = TurtleIcon[1];
+
         Turtle = true;
     }
     public void GetBanana()
     {
+
+        IconK.sprite = BananaIcon[1];
+
         Banana = true;
     }
     public void GetInverse()
     {
+
+        IconL.sprite = InverseIcon[1];
+
         Inverse = true;
     }
     public void GetSquild()
     {
+
+        IconI.sprite = SquildIcon[1];
         Squild = true;
+    }
+    public void GetMissile()
+    {
+
+        IconU.sprite = MissileIcon[1];
+
+        Missile = true;
     }
     public void UseTurtle()
     {
         if (Turtle == true)
         {
             Instantiate(TurtleShell, FishFire.position, FishFire.rotation);
+            IconJ.sprite = TurtleIcon[0];
+
             Turtle = false;
         }
     }
@@ -122,6 +164,9 @@ public class FishControl2 : MonoBehaviour
         if (Banana == true)
         {
             Instantiate(BananaPeel, FishThrow.position, FishThrow.rotation);
+
+            IconK.sprite = BananaIcon[0];
+
             Banana = false;
         }
     }
@@ -131,6 +176,8 @@ public class FishControl2 : MonoBehaviour
         {
             Enemy.GetComponent<FishControl>().InverseOp();
             //Diff
+            IconL.sprite = InverseIcon[0];
+
             Inverse = false;
         }
     }
@@ -138,9 +185,22 @@ public class FishControl2 : MonoBehaviour
     {
         if (Squild == true)
         {
+
+            IconI.sprite = SquildIcon[0];
             Ink.color = new Color(255f, 255f, 255f, 1f);
             GetInked = true;
             Squild = false;
+        }
+    }
+    public void UseMissile()
+    {
+        if (Missile == true)
+        {
+            Enemy.GetComponent<FishControl>().DisableControl();
+            //Diff
+            IconU.sprite = MissileIcon[0];
+
+            Missile = false;
         }
     }
     public void Clean()

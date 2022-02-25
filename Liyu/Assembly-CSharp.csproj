@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\GiveInverse.cs" />
     <Compile Include="Assets\Scripts\GiveSquild.cs" />
     <Compile Include="Assets\Scripts\BananaControl.cs" />
+    <Compile Include="Assets\Scripts\GiveRandom.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\TurtleShellControl.cs" />
     <Compile Include="Assets\Scripts\GiveBanana.cs" />
@@ -63,7 +64,7 @@
     <Compile Include="Assets\Scripts\InverseControl.cs" />
     <Compile Include="Assets\Scripts\FishControl.cs" />
     <Compile Include="Assets\Scripts\GiveTurtleShell.cs" />
-    <Compile Include="Assets\Scripts\GiveRandom.cs" />
+    <Compile Include="Assets\Scripts\GiveMissile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
