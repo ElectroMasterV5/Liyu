@@ -26,6 +26,7 @@ public class FishControl2 : MonoBehaviour
     public bool Squild = false;
     public bool GetInked = false;
     public bool Missile = false;
+    public bool FinalStart = false;
     public Sprite[] TurtleIcon;
     public Sprite[] BananaIcon;
     public Sprite[] InverseIcon;
@@ -50,11 +51,7 @@ public class FishControl2 : MonoBehaviour
         float steerAmount = Input.GetAxis("Horizontal2") * steerSpeed * Time.deltaTime;
         float moveAmount = Input.GetAxis("Vertical2") * moveSpeed * Time.deltaTime;
         //Diff
-        if (moveAmount != 0)
-        {
-
-        }
-        if (canMove && !isInverse)
+        if (canMove && !isInverse && FinalStart)
         {
             myFish.AddRelativeForce(new Vector2(0, moveAmount));
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), -steerAmount);
@@ -95,6 +92,10 @@ public class FishControl2 : MonoBehaviour
         {
             UseMissile();
         }
+    }
+    public void GameStart()
+    {
+        FinalStart = true;
     }
     public void InverseOp()
     {
