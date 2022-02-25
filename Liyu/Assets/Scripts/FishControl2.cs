@@ -213,18 +213,28 @@ public class FishControl2 : MonoBehaviour
         float randomNum = Random.Range(0f, 4f);
         if (randomNum < 1f)
         {
+            IconJ.sprite = TurtleIcon[1];
+
             Turtle = true;
         }
         if (randomNum < 2f && randomNum >= 1f)
         {
+
+            IconK.sprite = BananaIcon[1];
+
             Banana = true;
         }
         if (randomNum < 3f && randomNum >= 2f)
         {
+
+            IconI.sprite = SquildIcon[1];
             Squild = true;
         }
         if (randomNum <= 4f && randomNum >= 3f)
         {
+
+            IconL.sprite = InverseIcon[1];
+
             Inverse = true;
         }
     }
