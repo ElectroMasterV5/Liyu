@@ -20,6 +20,8 @@ public class FishControl : MonoBehaviour
     bool isMoving = false;
     public float stopTime;
     public int InverseNum = 1;
+    [Header("惩罚数值")]
+    public float inverseTime;
     public bool hasProps;
     public bool isInverse = false;
     public bool Turtle = false;
@@ -66,7 +68,7 @@ public class FishControl : MonoBehaviour
         {
             myFish.AddRelativeForce(new Vector2(0, moveAmount));
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), steerAmount);
-            Invoke("NormalOp",5f);
+            Invoke("NormalOp",inverseTime);
             // transform.Translate(0, moveAmount, 0);
         }
         // if (GetInked)
@@ -123,7 +125,6 @@ public class FishControl : MonoBehaviour
     public void EnableControl()
     {
         canMove = true;
-        
     }
    
     public void GetTurtle()
@@ -276,6 +277,7 @@ public class FishControl : MonoBehaviour
             IconJ.sprite = TurtleIcon[1];
             hasProps = true;
             Turtle = true;
+            Debug.Log("turtle");
         }
         if (randomNum < 2f&&randomNum >=1f)
         {
@@ -283,6 +285,7 @@ public class FishControl : MonoBehaviour
             IconK.sprite = BananaIcon[1];
             hasProps = true;
             Banana = true;
+            Debug.Log("Banana");
         }
         if (randomNum < 3f && randomNum >= 2f)
         {
@@ -290,6 +293,7 @@ public class FishControl : MonoBehaviour
             IconI.sprite = SquildIcon[1];
             hasProps = true;
             Squild = true;
+            Debug.Log("Squild");
         }
         if (randomNum < 4f && randomNum >= 3f)
         {
@@ -297,12 +301,14 @@ public class FishControl : MonoBehaviour
             IconL.sprite = InverseIcon[1];
             hasProps = true;
             Inverse = true;
+            Debug.Log("Inverse");
         }
         if (randomNum < 5f && randomNum >= 4f)
         {
             Icon.sprite = MissileIcon[1];
             hasProps = true;
             Missile = true;
+            Debug.Log("Missile");
         }
     }
 }

@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\GiveBanana.cs" />
      <Compile Include="Assets\Scripts\FishControl2.cs" />
      <Compile Include="Assets\Scripts\InverseControl.cs" />
+     <Compile Include="Assets\Scripts\MovePlatform.cs" />
      <Compile Include="Assets\Scripts\FishControl.cs" />
      <Compile Include="Assets\Scripts\GiveTurtleShell.cs" />
      <Compile Include="Assets\Scripts\CountDown.cs" />

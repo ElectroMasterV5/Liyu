@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
+    public Sprite[] Images;
     public string nextScene;
+    public Image thisImage;
+    private int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +19,19 @@ public class NextScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
-    public void LoadScene()
+
+    public void ChangePicture()
     {
-        SceneManager.LoadScene(nextScene);
+
+        if (i == 6)
+        {
+            i = 0;
+            SceneManager.LoadScene(nextScene);
+            return;
+        }
+        // var i = 0;
+        Debug.Log(i);
+        thisImage.sprite = Images[i++];
     }
 }
