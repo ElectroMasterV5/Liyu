@@ -20,6 +20,7 @@ public class FishControl2 : MonoBehaviour
     bool isMoving = false;
     public float stopTime;
     public int InverseNum = 1;
+    public bool hasProps;
     public bool isInverse = false;
     public bool Turtle = false;
     public bool Banana = false;
@@ -33,6 +34,7 @@ public class FishControl2 : MonoBehaviour
     public Sprite[] InverseIcon;
     public Sprite[] SquildIcon;
     public Sprite[] MissileIcon;
+    public Image Icon;
     public Image IconJ;
     public Image IconK;
     public Image IconL;
@@ -41,9 +43,9 @@ public class FishControl2 : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
+        Icon.sprite = null;
         IconJ.sprite = TurtleIcon[0];
         IconK.sprite = BananaIcon[0];
-        IconL.sprite = InverseIcon[0];
         IconU.sprite = MissileIcon[0];
         IconI.sprite = SquildIcon[0];
     }
@@ -73,26 +75,30 @@ public class FishControl2 : MonoBehaviour
         {
             Invoke("EnableControl", stopTime);
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             UseTurtle();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
             UseBanana();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
             UseInverse();
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
             UseSquild();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
             UseMissile();
         }
+        // if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     UseBanana();
+        // }
+        // if (Input.GetKeyDown(KeyCode.C))
+        // {
+        //     UseInverse();
+        // }
+        // if (Input.GetKeyDown(KeyCode.B))
+        // {
+        //     UseSquild();
+        // }
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
+        //     UseMissile();
+        // }
     }
     public void GameStart()
     {
@@ -115,94 +121,145 @@ public class FishControl2 : MonoBehaviour
     public void EnableControl()
     {
         canMove = true;
-
     }
 
     public void GetTurtle()
     {
+        if (hasProps)
+        {
+            return;
+        }
+        Icon.sprite = TurtleIcon[1];
         IconJ.sprite = TurtleIcon[1];
-
+        hasProps = true;
         Turtle = true;
     }
     public void GetBanana()
     {
-
+        if (hasProps)
+        {
+            return;
+        }
+        Icon.sprite = BananaIcon[1];
         IconK.sprite = BananaIcon[1];
-
+        hasProps = true;
         Banana = true;
     }
     public void GetInverse()
     {
-
+        if (hasProps)
+        {
+            return;
+        }
+        Icon.sprite = InverseIcon[1];
         IconL.sprite = InverseIcon[1];
-
+        hasProps = true;
         Inverse = true;
     }
     public void GetSquild()
     {
-
+        if (hasProps)
+        {
+            return;
+        }
+        Icon.sprite = SquildIcon[1];
         IconI.sprite = SquildIcon[1];
+        hasProps = true;
         Squild = true;
     }
     public void GetMissile()
     {
-
+        if (hasProps)
+        {
+            return;
+        }
+        Icon.sprite = MissileIcon[1];
         IconU.sprite = MissileIcon[1];
-
+        hasProps = true;
         Missile = true;
     }
     public void UseTurtle()
     {
-        if (Turtle == true)
+        if (!Turtle & hasProps)
         {
-            Instantiate(TurtleShell, FishFire.position, FishFire.rotation);
+            return;
+        }
+        if(Turtle == true)
+        {
+            // Icon.sprite = TurtleIcon[0];
+            Instantiate(TurtleShell, FishFire.position,FishFire.rotation);
             IconJ.sprite = TurtleIcon[0];
-
+            hasProps = false;
             Turtle = false;
+            Icon.sprite = null;
         }
     }
     public void UseBanana()
     {
+        if (!Banana & hasProps)
+        {
+            return;
+        }
         if (Banana == true)
         {
+            // Icon.sprite = BananaIcon[0];
             Instantiate(BananaPeel, FishThrow.position, FishThrow.rotation);
-
+           
             IconK.sprite = BananaIcon[0];
-
+            hasProps = false;
             Banana = false;
+            Icon.sprite = null;
         }
     }
     public void UseInverse()
     {
+        if (!Inverse & hasProps)
+        {
+            return;
+        }
         if (Inverse == true)
         {
+            // Icon.sprite = InverseIcon[0];
             Enemy.GetComponent<FishControl>().InverseOp();
             //Diff
             IconL.sprite = InverseIcon[0];
-
+            hasProps = false;
             Inverse = false;
+            Icon.sprite = null;
         }
     }
     public void UseSquild()
     {
+        if (!Squild & hasProps)
+        {
+            return;
+        }
         if (Squild == true)
         {
-
+            // Icon.sprite = SquildIcon[0];
             IconI.sprite = SquildIcon[0];
             Ink.color = new Color(255f, 255f, 255f, 1f);
             GetInked = true;
             Squild = false;
+            hasProps = false;
+            Icon.sprite = null;
         }
     }
     public void UseMissile()
     {
+        if (!Missile & hasProps)
+        {
+            return;
+        }
         if (Missile == true)
         {
+            // Icon.sprite = MissileIcon[0];
             Enemy.GetComponent<FishControl>().DisableControl();
             //Diff
             IconU.sprite = MissileIcon[0];
-
+            hasProps = false;
             Missile = false;
+            Icon.sprite = null;
         }
     }
     public void Clean()
