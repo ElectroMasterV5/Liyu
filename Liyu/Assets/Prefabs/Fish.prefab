@@ -91,7 +91,9 @@ MonoBehaviour:
   FishFire: {fileID: 179937348874764296}
   FishThrow: {fileID: 7803876493949851608}
   Enemy: {fileID: 0}
+  stopTime: 0
   InverseNum: 1
+  hasProps: 0
   isInverse: 0
   Turtle: 0
   Banana: 0
@@ -115,6 +117,7 @@ MonoBehaviour:
   MissileIcon:
   - {fileID: 21300000, guid: 00d25a7ed5e79d640a3bbbc8f41a5d3d, type: 3}
   - {fileID: 21300000, guid: d43873948f3b4784ba8b2a472e979c3c, type: 3}
+  Icon: {fileID: 0}
   IconJ: {fileID: 0}
   IconK: {fileID: 0}
   IconL: {fileID: 0}
@@ -160,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: be6d5b28933ad4ec69c698f5ec3b2019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

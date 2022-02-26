@@ -67,10 +67,10 @@ public class FishControl2 : MonoBehaviour
             Invoke("NormalOp", 5f);
             // transform.Translate(0, moveAmount, 0);
         }
-        if (GetInked)
-        {
-            Invoke("Clean", 5f);
-        }
+        // if (GetInked)
+        // {
+        //     Invoke("Clean", 5f);
+        // }
         if (!canMove)
         {
             Invoke("EnableControl", stopTime);
@@ -123,14 +123,13 @@ public class FishControl2 : MonoBehaviour
         canMove = true;
     }
 
-    public void GetTurtle()
+      public void GetTurtle()
     {
         if (hasProps)
         {
             return;
         }
         Icon.sprite = TurtleIcon[1];
-        IconJ.sprite = TurtleIcon[1];
         hasProps = true;
         Turtle = true;
     }
@@ -141,7 +140,6 @@ public class FishControl2 : MonoBehaviour
             return;
         }
         Icon.sprite = BananaIcon[1];
-        IconK.sprite = BananaIcon[1];
         hasProps = true;
         Banana = true;
     }
@@ -152,7 +150,6 @@ public class FishControl2 : MonoBehaviour
             return;
         }
         Icon.sprite = InverseIcon[1];
-        IconL.sprite = InverseIcon[1];
         hasProps = true;
         Inverse = true;
     }
@@ -163,7 +160,6 @@ public class FishControl2 : MonoBehaviour
             return;
         }
         Icon.sprite = SquildIcon[1];
-        IconI.sprite = SquildIcon[1];
         hasProps = true;
         Squild = true;
     }
@@ -174,7 +170,6 @@ public class FishControl2 : MonoBehaviour
             return;
         }
         Icon.sprite = MissileIcon[1];
-        IconU.sprite = MissileIcon[1];
         hasProps = true;
         Missile = true;
     }
@@ -186,9 +181,7 @@ public class FishControl2 : MonoBehaviour
         }
         if(Turtle == true)
         {
-            // Icon.sprite = TurtleIcon[0];
             Instantiate(TurtleShell, FishFire.position,FishFire.rotation);
-            IconJ.sprite = TurtleIcon[0];
             hasProps = false;
             Turtle = false;
             Icon.sprite = null;
@@ -202,10 +195,7 @@ public class FishControl2 : MonoBehaviour
         }
         if (Banana == true)
         {
-            // Icon.sprite = BananaIcon[0];
             Instantiate(BananaPeel, FishThrow.position, FishThrow.rotation);
-           
-            IconK.sprite = BananaIcon[0];
             hasProps = false;
             Banana = false;
             Icon.sprite = null;
@@ -219,10 +209,7 @@ public class FishControl2 : MonoBehaviour
         }
         if (Inverse == true)
         {
-            // Icon.sprite = InverseIcon[0];
             Enemy.GetComponent<FishControl>().InverseOp();
-            //Diff
-            IconL.sprite = InverseIcon[0];
             hasProps = false;
             Inverse = false;
             Icon.sprite = null;
@@ -234,16 +221,22 @@ public class FishControl2 : MonoBehaviour
         {
             return;
         }
-        if (Squild == true)
+        if (Squild)
         {
-            // Icon.sprite = SquildIcon[0];
-            IconI.sprite = SquildIcon[0];
             Ink.color = new Color(255f, 255f, 255f, 1f);
-            GetInked = true;
-            Squild = false;
+            // GetInked = true;
             hasProps = false;
+            Squild = false;
             Icon.sprite = null;
+            Debug.Log("Squid");
+            StartCoroutine(FadeColor());
         }
+    }
+
+    IEnumerator FadeColor()
+    {
+        yield return new WaitForSeconds(2f);
+        Ink.color = new Color(255, 255, 255, 0f);
     }
     public void UseMissile()
     {
@@ -262,39 +255,51 @@ public class FishControl2 : MonoBehaviour
             Icon.sprite = null;
         }
     }
-    public void Clean()
-    {
-        Ink.color = new Color(255, 255, 255, 0f);
-        GetInked = false;
-    }
+    // public void Clean()
+    // {
+    //         Ink.color = new Color(255, 255, 255, 0f);
+    //         GetInked = false;
+    // }
     public void GetRandom()
     {
-        float randomNum = Random.Range(0f, 4f);
-        if (randomNum < 1f)
+        if (hasProps)
         {
+            return;
+        }
+        float randomNum = Random.Range(0f, 5f);
+        if(randomNum < 1f)
+        {
+            Icon.sprite = TurtleIcon[1];
             IconJ.sprite = TurtleIcon[1];
-
+            hasProps = true;
             Turtle = true;
         }
-        if (randomNum < 2f && randomNum >= 1f)
+        if (randomNum < 2f&&randomNum >=1f)
         {
-
+            Icon.sprite = BananaIcon[1];
             IconK.sprite = BananaIcon[1];
-
+            hasProps = true;
             Banana = true;
         }
         if (randomNum < 3f && randomNum >= 2f)
         {
-
+            Icon.sprite = SquildIcon[1];
             IconI.sprite = SquildIcon[1];
+            hasProps = true;
             Squild = true;
         }
-        if (randomNum <= 4f && randomNum >= 3f)
+        if (randomNum < 4f && randomNum >= 3f)
         {
-
+            Icon.sprite = TurtleIcon[1];
             IconL.sprite = InverseIcon[1];
-
+            hasProps = true;
             Inverse = true;
+        }
+        if (randomNum < 5f && randomNum >= 4f)
+        {
+            Icon.sprite = MissileIcon[1];
+            hasProps = true;
+            Missile = true;
         }
     }
 }
