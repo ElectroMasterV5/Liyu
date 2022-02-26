@@ -18,6 +18,7 @@ public class FishControl2 : MonoBehaviour
     [SerializeField] GameObject Enemy;
     bool canMove = true;
     bool isMoving = false;
+    public float stopTime;
     public int InverseNum = 1;
     public bool isInverse = false;
     public bool Turtle = false;
@@ -70,25 +71,25 @@ public class FishControl2 : MonoBehaviour
         }
         if (!canMove)
         {
-            Invoke("EnableControl", 3f);
+            Invoke("EnableControl", stopTime);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             UseTurtle();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             UseBanana();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             UseInverse();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             UseSquild();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             UseMissile();
         }
