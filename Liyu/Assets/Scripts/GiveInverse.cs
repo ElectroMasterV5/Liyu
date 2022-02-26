@@ -11,6 +11,7 @@ public class GiveInverse : MonoBehaviour
         if(collision.tag == "Player")
         {
             collision.transform.GetComponent<FishControl>().GetInverse();
+            Debug.Log("get inverse");
             DestroyMyself();
         }
         if (collision.tag == "Player2")

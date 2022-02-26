@@ -38,20 +38,12 @@ public class FishControl : MonoBehaviour
     public Sprite[] MissileIcon;
 
     public Image Icon;
-    public Image IconJ;
-    public Image IconK;
-    public Image IconL;
-    public Image IconU;
-    public Image IconI;
+    
+    public GameObject jellyFish;
     // Update is called once per frame
     private void Start()
     {
-        Icon.sprite = null;
-        IconJ.sprite = TurtleIcon[0];
-        IconK.sprite = BananaIcon[0];
-        IconL.sprite = InverseIcon[0];
-        IconU.sprite = MissileIcon[0];
-        IconI.sprite = SquildIcon[0];
+        jellyFish.SetActive(false);
     }
     void Update()
     {
@@ -188,7 +180,7 @@ public class FishControl : MonoBehaviour
             Instantiate(TurtleShell, FishFire.position,FishFire.rotation);
             hasProps = false;
             Turtle = false;
-            Icon.sprite = null;
+            Icon.sprite = Resources.Load<Sprite>("PropUI");
         }
     }
     public void UseBanana()
@@ -202,7 +194,7 @@ public class FishControl : MonoBehaviour
             Instantiate(BananaPeel, FishThrow.position, FishThrow.rotation);
             hasProps = false;
             Banana = false;
-            Icon.sprite = null;
+            Icon.sprite = Resources.Load<Sprite>("PropUI");
         }
     }
     public void UseInverse()
@@ -216,7 +208,7 @@ public class FishControl : MonoBehaviour
             Enemy.GetComponent<FishControl2>().InverseOp();
             hasProps = false;
             Inverse = false;
-            Icon.sprite = null;
+            Icon.sprite = Resources.Load<Sprite>("PropUI");
         }
     }
     public void UseSquild()
@@ -231,7 +223,7 @@ public class FishControl : MonoBehaviour
             // GetInked = true;
             hasProps = false;
             Squild = false;
-            Icon.sprite = null;
+            Icon.sprite = Resources.Load<Sprite>("PropUI");
             Debug.Log("Squid");
             StartCoroutine(FadeColor());
         }
@@ -253,11 +245,18 @@ public class FishControl : MonoBehaviour
             // Icon.sprite = MissileIcon[0];
             Enemy.GetComponent<FishControl2>().DisableControl();
             //Diff
-            IconU.sprite = MissileIcon[0];
             hasProps = false;
             Missile = false;
-            Icon.sprite = null;
+            Icon.sprite = Resources.Load<Sprite>("PropUI");
+            Enemy.GetComponent<FishControl2>().jellyFish.SetActive(true);
+            StartCoroutine(CloseJellyFish());
         }
+    }
+    
+    IEnumerator CloseJellyFish()
+    {
+        yield return new WaitForSeconds(stopTime);
+        Enemy.GetComponent<FishControl2>().jellyFish.SetActive(false);
     }
     // public void Clean()
     // {
@@ -270,35 +269,23 @@ public class FishControl : MonoBehaviour
         {
             return;
         }
-        float randomNum = Random.Range(0f, 5f);
-        if(randomNum < 1f)
-        {
-            Icon.sprite = TurtleIcon[1];
-            IconJ.sprite = TurtleIcon[1];
-            hasProps = true;
-            Turtle = true;
-            Debug.Log("turtle");
-        }
-        if (randomNum < 2f&&randomNum >=1f)
+        float randomNum = Random.Range(1f, 6f);
+        
+        if (randomNum < 2f && randomNum >=1f)
         {
             Icon.sprite = BananaIcon[1];
-            IconK.sprite = BananaIcon[1];
             hasProps = true;
             Banana = true;
-            Debug.Log("Banana");
         }
         if (randomNum < 3f && randomNum >= 2f)
         {
             Icon.sprite = SquildIcon[1];
-            IconI.sprite = SquildIcon[1];
             hasProps = true;
             Squild = true;
-            Debug.Log("Squild");
         }
         if (randomNum < 4f && randomNum >= 3f)
         {
-            Icon.sprite = TurtleIcon[1];
-            IconL.sprite = InverseIcon[1];
+            Icon.sprite = InverseIcon[1];
             hasProps = true;
             Inverse = true;
             Debug.Log("Inverse");
@@ -309,6 +296,13 @@ public class FishControl : MonoBehaviour
             hasProps = true;
             Missile = true;
             Debug.Log("Missile");
+        }
+        if(randomNum < 6f && randomNum >= 5f)
+        {
+            Icon.sprite = TurtleIcon[1];
+            hasProps = true;
+            Turtle = true;
+            Debug.Log("turtle");
         }
     }
 }
