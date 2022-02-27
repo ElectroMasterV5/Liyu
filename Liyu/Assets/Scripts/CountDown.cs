@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
+    public Image shownImage;
+    public Sprite[] countDownImages;
     public int count_down;
-    public Text countNum;
     public GameObject Player1;
     public GameObject Player2;
     // Start is called before the first frame update
@@ -28,18 +30,23 @@ public class CountDown : MonoBehaviour
         {
 
             count_down--;
-
-            countNum.text = ""+count_down;
+            shownImage.sprite = countDownImages[count_down];
+            // countNum.text = ""+count_down;
 
         }
         else
         {
-
             CancelInvoke();
             Player1.GetComponent<FishControl>().GameStart();
             Player2.GetComponent<FishControl2>().GameStart();
-            Destroy(countNum);
+            shownImage.gameObject.SetActive(false);
         }
 
+    }
+
+    //event function for restart level
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

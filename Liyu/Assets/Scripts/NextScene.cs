@@ -34,4 +34,9 @@ public class NextScene : MonoBehaviour
         Debug.Log(i);
         thisImage.sprite = Images[i++];
     }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FishControl : MonoBehaviour
@@ -79,6 +80,10 @@ public class FishControl : MonoBehaviour
             UseInverse();
             UseSquild();
             UseMissile();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         // if (Input.GetKeyDown(KeyCode.K))
         // {
