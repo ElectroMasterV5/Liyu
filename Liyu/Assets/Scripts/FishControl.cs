@@ -40,6 +40,7 @@ public class FishControl : MonoBehaviour
     public Image Icon;
     
     public GameObject jellyFish;
+    public GameObject inverseBoundary;
     // Update is called once per frame
     private void Start()
     {
@@ -209,9 +210,15 @@ public class FishControl : MonoBehaviour
             hasProps = false;
             Inverse = false;
             Icon.sprite = Resources.Load<Sprite>("PropUI");
-            // Enemy.GetComponent<FishControl2>().jellyFish.SetActive(true);
-            // StartCoroutine(CloseJellyFish());
+            Enemy.GetComponent<FishControl2>().inverseBoundary.SetActive(true);
+            StartCoroutine(CloseInverse());
         }
+    }
+
+    IEnumerator CloseInverse()
+    {
+        yield return new WaitForSeconds(inverseTime);
+        Enemy.GetComponent<FishControl2>().inverseBoundary.SetActive(false);
     }
     public void UseSquild()
     {
@@ -260,11 +267,7 @@ public class FishControl : MonoBehaviour
         yield return new WaitForSeconds(stopTime);
         Enemy.GetComponent<FishControl2>().jellyFish.SetActive(false);
     }
-    // public void Clean()
-    // {
-    //         Ink.color = new Color(255, 255, 255, 0f);
-    //         GetInked = false;
-    // }
+    
     public void GetRandom()
     {
         if (hasProps)
@@ -290,21 +293,18 @@ public class FishControl : MonoBehaviour
             Icon.sprite = InverseIcon[1];
             hasProps = true;
             Inverse = true;
-            Debug.Log("Inverse");
         }
         if (randomNum < 5f && randomNum >= 4f)
         {
             Icon.sprite = MissileIcon[1];
             hasProps = true;
             Missile = true;
-            Debug.Log("Missile");
         }
         if(randomNum < 6f && randomNum >= 5f)
         {
             Icon.sprite = TurtleIcon[1];
             hasProps = true;
             Turtle = true;
-            Debug.Log("turtle");
         }
     }
 }

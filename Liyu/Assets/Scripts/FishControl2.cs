@@ -39,6 +39,7 @@ public class FishControl2 : MonoBehaviour
     public Image Icon;
 
     public GameObject jellyFish;
+    public GameObject inverseBoundary;
     // Update is called once per frame
     private void Start()
     {
@@ -208,8 +209,17 @@ public class FishControl2 : MonoBehaviour
             hasProps = false;
             Inverse = false;
             Icon.sprite = Resources.Load<Sprite>("PropUI");
+            Enemy.GetComponent<FishControl>().inverseBoundary.SetActive(true);
+            StartCoroutine(CloseInverse());
         }
     }
+    
+    IEnumerator CloseInverse()
+    {
+        yield return new WaitForSeconds(inverseTime);
+        Enemy.GetComponent<FishControl>().inverseBoundary.SetActive(false);
+    }
+    
     public void UseSquild()
     {
         if (!Squild & hasProps)
