@@ -20,6 +20,8 @@ public class FishControl2 : MonoBehaviour
     bool isMoving = false;
     public float stopTime;
     public int InverseNum = 1;
+    [Header("惩罚数值")]
+    public float inverseTime;
     public bool hasProps;
     public bool isInverse = false;
     public bool Turtle = false;
@@ -57,7 +59,7 @@ public class FishControl2 : MonoBehaviour
         {
             myFish.AddRelativeForce(new Vector2(0, moveAmount));
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), steerAmount);
-            Invoke("NormalOp", 5f);
+            Invoke("NormalOp", inverseTime);
             // transform.Translate(0, moveAmount, 0);
         }
         // if (GetInked)

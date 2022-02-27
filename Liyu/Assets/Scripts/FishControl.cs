@@ -209,6 +209,8 @@ public class FishControl : MonoBehaviour
             hasProps = false;
             Inverse = false;
             Icon.sprite = Resources.Load<Sprite>("PropUI");
+            // Enemy.GetComponent<FishControl2>().jellyFish.SetActive(true);
+            // StartCoroutine(CloseJellyFish());
         }
     }
     public void UseSquild()
