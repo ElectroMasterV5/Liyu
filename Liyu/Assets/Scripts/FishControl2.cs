@@ -61,6 +61,7 @@ public class FishControl2 : MonoBehaviour
             myFish.AddRelativeForce(new Vector2(0, moveAmount));
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), steerAmount);
             Invoke("NormalOp", inverseTime);
+            Debug.Log("fish 2 inverse");
             // transform.Translate(0, moveAmount, 0);
         }
         // if (GetInked)

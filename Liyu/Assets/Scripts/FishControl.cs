@@ -56,6 +56,7 @@ public class FishControl : MonoBehaviour
         {
             myFish.AddRelativeForce(new Vector2(0, moveAmount));
             transform.RotateAround(fishHead.position, new Vector3(0, 0, 1), -steerAmount);
+            Debug.Log("false inverse");
             // transform.Translate(0, moveAmount, 0);
         }
         if (canMove && isInverse)
@@ -225,11 +226,12 @@ public class FishControl : MonoBehaviour
             StartCoroutine(CloseInverse());
         }
     }
-
     IEnumerator CloseInverse()
     {
+        // isInverse = true;
         yield return new WaitForSeconds(inverseTime);
         Enemy.GetComponent<FishControl2>().inverseBoundary.SetActive(false);
+        // isInverse = false;
     }
     public void UseSquild()
     {

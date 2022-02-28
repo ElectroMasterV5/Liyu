@@ -44,6 +44,10 @@ public class CountDown : MonoBehaviour
 
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     //event function for restart level
     public void RestartLevel()
     {
