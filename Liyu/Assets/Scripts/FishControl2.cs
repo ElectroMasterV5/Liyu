@@ -114,6 +114,12 @@ public class FishControl2 : MonoBehaviour
         canMove = false;
         Debug.Log("I was crashed");
     }
+    
+    public void StopMove()
+    {
+        steerSpeed = 0;
+        moveSpeed = 0;
+    }
     public void EnableControl()
     {
         canMove = true;

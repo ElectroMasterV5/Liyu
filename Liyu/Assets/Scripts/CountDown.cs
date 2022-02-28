@@ -49,4 +49,10 @@ public class CountDown : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    //event function
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
